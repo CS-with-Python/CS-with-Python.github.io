@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+        function timedDisplay(textList){
+            var length = textList[0].length;
+            var word = textList[0];
+            var splitPoint = 1 + Math.ceil((length - 1)/4);
+            $("#left").text(word.slice(0, splitPoint - 1));
+            $("#focus").text(word[splitPoint - 1]);
+            if (length > splitPoint){
+                $("#right").text(word.slice(splitPoint));
+            }
+            else{
+                $("#right").text("");
+            }
+            if (textList.length > 1){
+                var newTextList = textList.slice(1);
+                setTimeout(function(){
+                    timedDisplay(newTextList);
+                }, 300);
+            }
+
+        }
+
+        function play(){
+            var allText = $("#input-form").val();
+            var splitText = allText.split(' ');
+                setTimeout(function(){
+                    timedDisplay(splitText);
+                },300);
+            
+        }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+        <div class="jumbotron">
+          <h1>Speed it up!</h1>
+
+          <div class="panel panel-default">
+              <div class="panel-body" id="reading-panel">
+                  <table cellspacing=0 cellpadding=0>
+                      <tr><td style="width:40px;">&nbsp;</td><td>v</td><td>&nbsp;</div>
+                      <tr><td style="text-align:right;" id="left">w</td><td id="focus" style="color:red">o</td><td id="right">rd</div>
+                      <tr><td>&nbsp;</td><td>^</td><td>&nbsp;</div>
+                  </table>
+
+          </div>
+
+          <form role="form">
+              <div class="form-group">
+                  <textarea class="form-control" id="input-form">In celebration of my new coffee mill I present to you my quick-reading app.</textarea>
+              </div>
+          </form>
+          <p><a class="btn btn-primary btn-lg" role="button" onclick="play();">Go!</a></p>
+        </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
+
