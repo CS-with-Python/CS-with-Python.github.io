@@ -47,24 +47,24 @@
         }
     </script>
   </head>
-  <body>
+  <body style="font-size:24px;">
     <div class="container">
         <div class="jumbotron">
           <h1>Speed it up!</h1>
 
           <div class="panel panel-default">
               <div class="panel-body" id="reading-panel">
-                  <table cellspacing=0 cellpadding=0>
-                      <tr><td style="width:40px;">&nbsp;</td><td>v</td><td>&nbsp;</div>
-                      <tr><td style="text-align:right;" id="left">w</td><td id="focus" style="color:red">o</td><td id="right">rd</div>
-                      <tr><td>&nbsp;</td><td>^</td><td>&nbsp;</div>
+                  <table cellspacing=0 cellpadding=0 class="display-panel" style="width:300px">
+                      <tr style="background-image: url('black_bar_down.png'); background-position: bottom; background-repeat: repeat-x;"><td>&nbsp;</td><td style="background-image: url('black_thing_down.png'); background-position: center bottom; background-repeat: no-repeat;"></td><td>&nbsp;</div>
+                      <tr><td style="text-align:right; width:10%" id="left">w</td><td id="focus" style="color:red;">o</td><td id="right" style="width:90%">rd</td></tr>
+                      <tr style="background-image: url('black_bar_up.png'); background-position: top; background-repeat: repeat-x;"><td>&nbsp;</td><td style="background-image: url('black_thing_up.png'); background-position: center top; background-repeat: no-repeat;"></td><td>&nbsp;</div>
                   </table>
 
           </div>
 
           <form role="form">
               <div class="form-group">
-                  <textarea class="form-control" id="input-form">In celebration of my new coffee mill I present to you my quick-reading app.</textarea>
+                  <textarea class="form-control" id="input-form">Place your text here and press Go!</textarea>
               </div>
           </form>
           <p><a class="btn btn-primary btn-lg" role="button" onclick="play();">Go!</a></p>
