@@ -56,7 +56,7 @@
 
         function play(){
             var allText = $("#input-form").val();
-            var splitText = allText.split(' ');
+            var splitText = allText.split(/\s/);
                 setTimeout(function(){
                     timedDisplay(splitText);
                 }, 1000 * 60 / speed);
