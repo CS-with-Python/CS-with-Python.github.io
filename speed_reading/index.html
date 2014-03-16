@@ -17,6 +17,18 @@
     <![endif]-->
     <script>
         speed = 200;
+        paused = true;
+        position = 0;
+
+
+        function pause(){
+            paused = true;
+        }
+
+        function stop(){
+            paused = true;
+            position = 0;
+        }
 
         function faster(){
             speed = speed + 50;
@@ -31,6 +43,11 @@
         }
 
         function timedDisplay(textList){
+            if (paused) {
+                return
+            }
+            position = position + 1;
+
             var length = textList[0].length;
             var word = textList[0];
             var splitPoint = 1 + Math.ceil((length - 1)/4);
@@ -51,14 +68,19 @@
                     timedDisplay(newTextList);
                 }, 1000 * 60 / speed);
             }
+            else {
+                <!--text ended-->
+                position = 0;
+            }
 
         }
 
         function play(){
+            paused = false;
             var allText = $("#input-form").val();
             var splitText = allText.split(/\s/);
                 setTimeout(function(){
-                    timedDisplay(splitText);
+                    timedDisplay(splitText.slice(position));
                 }, 1000 * 60 / speed);
             
         }
@@ -82,12 +104,14 @@
 
           <form role="form">
               <div class="form-group">
-                  <textarea class="form-control" id="input-form">Place your text here and press Go!</textarea>
+                  <textarea class="form-control" id="input-form">Place your text here and press play.</textarea>
               </div>
           </form>
           <div class="btn-toolbar" role="toolbar">
             <div class="btn-group">
-                <button type="button" class="btn btn-default" onclick="play();">Go!</button>
+                <button type="button" class="btn btn-default glyphicon glyphicon-play" onclick="play();"></button>
+                <button type="button" class="btn btn-default glyphicon glyphicon-pause" onclick="pause();"></button>
+                <button type="button" class="btn btn-default glyphicon glyphicon-stop" onclick="stop();"></button>
             </div>
             <div class="btn-group" style="width:180px; text-align:right">
                 <span class="" id="speedOMeter">200 WPM</span>
